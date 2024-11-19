@@ -1,0 +1,60 @@
+{% extends 'chatapp/base.html'%} {%block title%}Sign-Up{%endblock%}
+
+<body>
+  {%block content%}
+
+  <div class="p-10 lg:p-3 text-center">
+    <h1 class="text-3xl lg:text-6xl text-white">Sign-Up</h1>
+  </div>
+
+  <form method="POST" action="." class="lg:w-1/4 px-4 mx-auto">
+    {% csrf_token %}
+    <div class="mb-5">
+      <label for="text-white">Userrname</label>
+      <input
+        type="text"
+        class="w-full mt-2 px-4 py-2 rounded-xl"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter username"
+        name="username"
+      />
+    </div>
+    <div class="mb-5">
+      <label for="text-white">Password</label>
+      <input
+        type="password"
+        class="w-full mt-2 px-4 py-2 rounded-xl"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter password"
+        name="password1"
+      />
+    </div>
+    <div class="mb-5">
+      <label for="text-white">Retype-Password</label>
+      <input
+        type="password"
+        class="w-full mt-2 px-4 py-2 rounded-xl"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter password"
+        name="password2"
+      />
+    </div>
+
+    {%if form.errors%} {%for field in form%} {%for error in field.errors%}
+    <div class="mb-5 p-4 rounded-xl bg-red-300 text-white">
+      <p>{{error|escape}}</p>
+    </div>
+    {%endfor%} {%endfor%} {%endif%}
+
+    <button
+      type="submit"
+      class="px-5 py-3 rounded-xl text-white bg-teal-800 hover:bg-teal-700"
+    >
+      Submit
+    </button>
+  </form>
+  {%endblock%}
+</body>
